@@ -6,6 +6,10 @@ on:
     types:
       - completed
 
+concurrency:
+  group: ci-${{github.actor}}-${{github.head_ref || github.run_number}}-${{github.ref}}-windows
+  cancel-in-progress: true
+
 jobs:
   on-success:
     runs-on: windows-latest
